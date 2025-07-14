@@ -14,8 +14,10 @@
     </div>
 
     <div class="container-body">
-        <h2>Nix: an overlay of dev shells</h2>
+        <h2>Nix: an overlay of the land of dev shells</h2>
         <p class="subheading">July 2, 2025</p>
+
+        <h4>Wanting a dev shell</h4>
 
         <p>Ahoy, maties--</p>
 
@@ -39,21 +41,23 @@
             too difficult to pick up and keep the momentum going for a project. There's too many things to do day-to-day
             and if I have to spend the only hour I have to work on something writing documentation, then that's
             demotivating. I want to spend my time thinking of ideas and coding them and less leaving bread crumbs along
-            the way.
+            the way. Plus, documentation tends to get out of date, especially when working at large projects at work.
         </p>
 
         <p>
-            The side project was inspired by RC and within my cohort there were several people talking about and
-            learning Nix. From what I understood, Nix might be a technology that would help solve these problems. Shae
-            was one of those folks and so I was asking him if this is something Nix could do. We both agreed that
-            getting something set up should be possible, but I stressed that I wanted _everything_ to be automated. By
-            _everything_ I mean system packages, language and tooling, libraries in addition to the supporting services
-            to the application like the database. Most install guides I've worked with generally tend to ask you to
-            install the system packages and services ahead of time, but I wanted something that would be specified in
-            code somehow. Also whatever we come up with should ideally be transferable to prod, so that the environment
-            that developers are using on their laptops is deployable and doesn't diverge. Shae was not convinced that
-            that was possible, but he was happy to find out otherwise.
+            The side project was inspired by the Recurse Center, a writer-retreat-like program for coders, and within my
+            cohort there were several people talking about and learning Nix. From what I understood, Nix might be a
+            technology that would help solve these problems. Shae was one of those folks and so I was asking him if this
+            is something Nix could do. We both agreed that getting something set up should be possible, but I stressed
+            that I wanted _everything_ to be automated. By _everything_ I mean system packages, language and tooling,
+            libraries in addition to the supporting services to the application like the database. Most install guides
+            I've worked with generally tend to ask you to install the system packages and services ahead of time, but I
+            wanted something that would be specified in code somehow. Also whatever we come up with should ideally be
+            transferable to prod, so that the environment that developers are using on their laptops is deployable and
+            doesn't diverge. Shae was not convinced that that was possible, but he was happy to find out otherwise.
         </p>
+
+        <h4>What is Nix?</h4>
 
         <p>
             To get started, I tried mapping a lay of the land of Nix as folks are generally quick to point out it
@@ -72,7 +76,12 @@
             <li><a href="https://nixcloud.io/tour/">A tour of Nix</a> by Paul Seitz and Joachim Schiele</li>
         </ul>
 
-        <p><img src="nyx.jpg" class="blog-img" /></p>
+        <figure>
+            <img src="nyx.png" class="blog-img" alt="Nyx, goddess of the night" />
+            <figcaption>Nyx, goddess of the night</figcaption>
+        </figure>
+
+        <h4>Trying with flakes</h4>
 
         <p>
             These were helpful resources for helping me get a lay of the land, but I still felt a bit stuck on how
@@ -97,6 +106,9 @@
             barfed when Shae tried it out: he already had Postgres running and the ports collided. We thought about
             modifying the Bash script to choose a free port, but...
         </p>
+
+        <h4>devenv, it just worked</h4>
+
         <p>
             Eventually we backed up and looked around for some other solutions. Using Nix for reproducible development
             environments isn't exactly our most novel take, so we wanted to see what others were doing to make it
@@ -107,12 +119,14 @@
             devbox using json.
         </p>
         <p>
-            Low and behold <a href="https://github.com/shapr/ellisorrery/blob/main/devenv.nix">we tried devenv</a> and
-            postgres booted up nicely alongside the Haskell tooling.
+            Lo and behold <a href="https://github.com/shapr/ellisorrery/blob/main/devenv.nix">we tried devenv</a> and
+            postgres booted up nicely alongside the Haskell tooling. This worked on both Linux and Mac platforms without
+            any tinkering on our part, which was exactly what I wanted.
         </p>
 
-        <p><img src="** Insert picture of it working here **" class="blog-img" /></p>
+        <p><img src="devenv-up.png" class="blog-img" /></p>
 
+        <h4>Parting thoughts</h4>
 
         <p>
             Clearly I want to learn more about Nix, but I was rather satisfied with how effectively devenv seems to
@@ -143,6 +157,7 @@
             people grow along the way. Perhaps get hands on experience with a tool or technique they hadn't come across
             before.
         </p>
+
         <p>
             Thanks again to <a>Shae</a> for helping me on the journey and encouraging me to write something.
             Happy hacking, Tim.
@@ -154,7 +169,7 @@
         <a href="https://github.com/ttiimm">GitHub</a>
     </div>
 
-    <div class="container-bottom">tim likarish &copy; 2025</div>
+    <div class="container-bottom">tim likarish ellis &copy; 2025</div>
 </body>
 
 </html>
