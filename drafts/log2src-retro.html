@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>ttiimm > blog > log2src: a retrospective</title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="icon" href="/favicon.png" />
+</head>
+
+<body>
+    <div class="container-top">
+        <h1><a href="/index.html" class="unstyled-link">ttiimm</a></h1>
+    </div>
+
+    <div class="container-body">
+        <h2>log2src: a retrospective</h2>
+        <p class="subheading">May, 2026</p>
+
+        <p>A couple years back I wanted to learn some Rust and so started learning the language by building a project to
+            help try and fetch copies of my photos from Google. That project gave me a rudimentary understanding of the
+            language and I felt like I got to learn some of the interesting parts of the language. However, it wasn't
+            something that I wanted to continue working on and I had an idea of something else I'd like to build.</p>
+
+        <p>The next project, log2src, came out of wanting to do something more interesting with Rust, but also to try
+            and realize an idea, simple but somewhat novel, I had at the time. I wanted a library that would help map
+            between the artifacts emitted by source code (logs, but someday metrics and traces) and the code itself. To
+            make things more concrete, I've spent a fair amount of time trying to debug fairly complex applications and
+            the only help you have are a collection of log files. One of the first ways to try and start building a
+            theory about what happened, especially when you aren't familiar with a part of the code base, is to take a
+            related log and grep for where it occurs in the code. The log2src project is an attempt to help automate
+            this debugging process.</p>
+
+
+        <figure>
+            <a href="https://raw.githubusercontent.com/ttiimm/log2src/main/docs/debugger-demo.gif">
+                <img src="https://raw.githubusercontent.com/ttiimm/log2src/main/docs/debugger-demo.gif" class="blog-img"
+                    alt="log2src's log driven debugger" />
+                <figcaption>The devenv Getting Started page</figcaption>
+            </a>
+        </figure>
+
+        <p>The first experiment in this line of thinking that I've produced is what I've been calling log driven
+            debugging. Essentially a low tech time traveling debugger that uses the log to determine the ordering of
+            events and snippets of the state in the appliactions execution. There's a working "debugger" written for VS
+            Code implementing the Debug Adapter protocol, the Language Server Protocols accomplice, and it somewhat
+            supports working with Rust, Java, Python, and C++.</p>
+
+        <h4>How it Works</h4>
+
+        <p>The overall concept is pretty simple, seems achievable, but I hadn't seen it done before. First search the
+            source code and find all the log statements using Tree-Sitter. ...more explanation about how tree sitter
+            works here...</p>
+
+        <p>Then for each log statement in the source code, convert it into a regular expression. If there is string
+            interpolation or other placeholders, convert these into capture groups so that when the regex is matched
+            against a log line, then we can match it and figure out what the outputted state of a variable (or more
+            generally statement) was.</p>
+
+        <p>In order to drive the debugger, allow users to set breakpoints in the log file. When a breakpoint is hit,
+            then call out to log2src to try and match it. If a match is returned, change the editor window to show that
+            place in code, show the values of any variables, and try to display any call stack information.</p>
+
+        <h4>Places to Go</h4>
+
+        <ul>
+            <li>adding a "watch" feature</li>
+            <li>using breakpoints in the source to drive the log (Tim Stack's idea)</li>
+            <li>Call stack generation (initially a failure)</li>
+            <li>traces (metrics?)</li>
+            <li>Collaboration with lnav</li>
+            <li>Energy for long term projects</li>
+        </ul>
+
+        <h4>Conclusion</h4>
+
+        <uL>
+            <li>Pushing an idea into the world</li>
+            <li>Led to application to Recurse Center</li>
+        </uL>
+
+    </div>
+
+    <div class="container-body">
+        <a href="/blog.html">Blog</a> //
+        <a href="https://github.com/ttiimm">GitHub</a>
+    </div>
+
+    <div class="container-bottom">tim likarish ellis &copy; 2026</div>
+</body>
+
+</html>
