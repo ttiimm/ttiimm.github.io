@@ -1,7 +1,23 @@
+@font-face {
+  font-family: 'Raleway';
+  src: url('fonts/Raleway-VariableFont_wght.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('fonts/Raleway-Italic-VariableFont_wght.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 body {
     line-height: 1.75;
     font-size: 16px;
-    font-family: "Raleway";
+    font-family: "Raleway", sans-serif;
     background-color: #faf9f6;
 }
 
